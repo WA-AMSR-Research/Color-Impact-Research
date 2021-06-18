@@ -9,7 +9,7 @@
 
     <style>
         body {
-            background-color: lightgray;
+            background-color: darkgray;
             font-family: "Arial Unicode MS", sans-serif;
             text-align: center;
         }
@@ -68,7 +68,7 @@
         }
 
         /* Styling Button */
-        button {
+        /* button {
             background-color: #05c46b;
             border: 1px solid #777;
             border-radius: 2px;
@@ -79,21 +79,21 @@
             margin-top: 50px;
             margin-bottom: 20px;
             display: inline-block;
-        }
-
-        .question {}
+        }*/
     </style>
 
 </head>
 
-<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js">
+    var storage = sessionStorage
+</script>
 
 
 <body>
     <h1>Survey Form</h1>
     <h4>Wakaba Aihara's AMSR Project</h4>
 
-    <form id="form">
+    <form name="formname" id="id_form" action="該当のPHPファイルのURL/index.php" method="post" target="send">
 
         <h3>Please tell a little about yourself.</h3>
 
@@ -101,7 +101,7 @@
             <p style="display:block;">Gender:
                 <input type="radio" name="Gender" value="1">Male
                 <input type="radio" name="Gender" value="2">Female
-                <input type="radio" name="Gender" value="3">Non-binary
+                <input type="radio" name="Gender" value="3">Other
             </p>
         </div>
 
@@ -154,7 +154,7 @@
             </tr>
 
             <tr align=center>
-                <td align=center style="   padding: 15px 15px 15px 15px">With the background color of your choice, how well were you feel concentrated?</td>
+                <td align=center style="   padding: 15px 15px 15px 15px">With the background color of your choice, how well did you feel concentrated?</td>
                 <td><input type="radio" name="performance" value="1"></td>
                 <td><input type="radio" name="performance" value="2"></td>
                 <td><input type="radio" name="performance" value="3"></td>
@@ -163,7 +163,7 @@
             </tr>
 
             <tr align=center>
-                <td align=center style="   padding: 15px 15px 15px 15px">With the background color of your chocie, how well were you motivated?</td>
+                <td align=center style="   padding: 15px 15px 15px 15px">With the background color of your choice, how well were you motivated?</td>
                 <td><input type="radio" name="background" value="1"></td>
                 <td><input type="radio" name="background" value="2"></td>
                 <td><input type="radio" name="background" value="3"></td>
@@ -181,7 +181,13 @@
     Thank you for taking the survey. To submit the results, press the <strong>Send info</strong> button below.
     <p style="padding:10px"></p>
     <input type="submit" value="Send Info">
-    <p style="padding:30px"></p>
+    <p style="padding:10px"></p>
+
+    <p style="padding-bottom:50px">
+        <a href="#" onclick="window.close()">[タブを閉じる]</a>
+    </p>
 
 
 </body></html>
+
+

@@ -14,12 +14,7 @@
             text-align: center;
         }
 
-        .h3 {
-            padding: 0px 0px 0px 0px;
-            margin: 0px 0px 0px 0px;
-        }
-
-        form {
+        .form {
             background-color: white;
             max-width: 1500px;
             margin: 50px auto;
@@ -32,10 +27,9 @@
             text-align: center;
             margin-bottom: 25px;
             display: flex;
-            flex-flow: row wrap;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            margin: 5px 10px 5px;
-            max-width: 600px;
         }
 
         /* Styling form-control Label */
@@ -43,7 +37,7 @@
             text-align: center;
             display: block;
             margin-bottom: 20px;
-            max-width: 500px;
+            max-width: auto;
         }
 
         /* Styling form-control input, select, textarea */
@@ -59,64 +53,56 @@
 
         }
 
-        /* Styling form-control Radio 
-        button and Checkbox */
+        /* Styling form-control Radio button and Checkbox */
         .form-control input[type="radio"],
         .form-control input[type="checkbox"] {
             display: inline-block;
             width: auto;
         }
-
-        /* Styling Button */
-        /* button {
-            background-color: #05c46b;
-            border: 1px solid #777;
-            border-radius: 2px;
-            font-family: inherit;
-            font-size: 21px;
-            display: block;
-            width: 100%;
-            margin-top: 50px;
-            margin-bottom: 20px;
-            display: inline-block;
-        }*/
     </style>
 
 </head>
 
-<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js">
-    var storage = sessionStorage
-</script>
-
-
 <body>
-    <h1>Survey Form</h1>
-    <h4>Wakaba Aihara's AMSR Project</h4>
+    <h1 style="padding-top:40px; padding-bottom:0px">Survey Form</h1>
+    <h4 style="padding-top:0px; padding-bottom:20px">Wakaba Aihara's AMSR Project</h4>
 
-    <form name="formname" id="id_form" action="該当のPHPファイルのURL/index.php" method="post" target="send">
+    <hr>
 
-        <h3>Please tell a little about yourself.</h3>
+    <form style="background-color: white;
+                 max-width: 1500px;
+                 margin: 50px auto;
+                 padding: 20px 20px 20px 20px;
+                 box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);">
+        <h3 style="margin-top: 30px; padding-bottom: 0px">Please tell a little about yourself.</h3>
 
-        <div class="form-control" style="margin:20px 250px">
-            <p style="display:block;">Gender:
+        <div class="form-control">
+            <p style="margin-top: 20px; margin-bottom:0px">Gender:
                 <input type="radio" name="Gender" value="1">Male
                 <input type="radio" name="Gender" value="2">Female
                 <input type="radio" name="Gender" value="3">Other
             </p>
         </div>
 
-        <div class="form-control" style="display:block; maximum-width: 50px; margin:20px 250px">
+        <div class="form-control">
             <p>Age Group:
-                <input type="radio" name="Age" value="1">Under 12<input type="radio" name="Age" value="2">12-17<input type="radio" name="Age" value="3">18-24<input type="radio" name="Age" value="4">25-34<input type="radio" name="Age" value="5">35-44<input type="radio" name="Age" value="6">45-54<input type="radio" name="Age" value="7">55-64<input type="radio" name="Age" value="8">Above 64
+                <input type="radio" name="Age" value="1">Under 12
+                <input type="radio" name="Age" value="2">12-17
+                <input type="radio" name="Age" value="3">18-24
+                <input type="radio" name="Age" value="4">25-34
+                <input type="radio" name="Age" value="5">35-44
+                <input type="radio" name="Age" value="6">45-54
+                <input type="radio" name="Age" value="7">55-64
+                <input type="radio" name="Age" value="8">Above 64
             </p>
         </div>
 
         <div class="form-control" style="margin: 20px 350px ">
-            <label for="color" id="label-color" style="text-align:center; margin:auto; align-items: center">
+            <label for="color" id="label-color">
                 Which background color did you choose?
             </label>
             <!-- Dropdown options -->
-            <select name="color" id="color">
+            <select name="color" id="color" style="margin-bottom:20px">
                 <option value="red">Red</option>
                 <option value="yellow">Yellow</option>
                 <option value="blue">Blue</option>
@@ -131,7 +117,8 @@
     <div class="question" style="padding: 30px 30px">
 
         <h3 style="margin-top: 0px; padding-top: 0px; padding-bottom: 15px">The following series of questions ask about your feelings towards the tests you have just taken.
-            <br>From scale of 1 to 4, select the answer that is most true.<br>(1=Not at all well, 2=Slightly well, 3=Moderately well, 4=Very well, 5=Extremely well)
+            <br>From scale of 1 to 5, select the answer that is most true.<br>
+            (1=Not at all well, 2=Slightly well, 3=Moderately well, 4=Very well, 5=Extremely well)
         </h3>
 
         <table border>
@@ -177,17 +164,7 @@
 
     <hr>
 
-    <p></p>
-    Thank you for taking the survey. To submit the results, press the <strong>Send info</strong> button below.
-    <p style="padding:10px"></p>
-    <input type="submit" value="Send Info">
-    <p style="padding:10px"></p>
+    <button type="submit" class="submit" onclick="location.href='thankyou.html'" a href="#" style="width: 15%; margin-top: 30px; margin-bottom: 80px; padding: 20px; font-size: 25px; border-radius:20px;">Send Info</button>
 
-    <p style="padding-bottom:50px">
-        <a href="#" onclick="window.close()">Close the Tab [タブを閉じる]</a>
-    </p>
-
-    
-</body>
-</html>
+</body></html>
 

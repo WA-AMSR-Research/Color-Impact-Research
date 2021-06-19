@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Wakaba Aihara AMSR -Spot the Difference</title>
+	<link rel="stylesheet" type="text/css" href="difference_style.css">
+
+	<!--call JQuiry -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+	<!-- Clicking in image map areas -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			// When clicked, show difference
+			$('#transparentmap AREA').click(function() {
+				var theDifference = '#' + $(this).attr('id') + '-diff';
+				$(theDifference).css('display', 'inline');
+				$(theDifference).data('clicked', true);
+
+				// When all differences selected/clicked, show continue
+				if ($('#bee-diff').data('clicked') && $('#cloud1-diff').data('clicked') && $('#cloud2-diff').data('clicked') && $('#sunglasses-diff').data('clicked') && $('#sun-diff').data('clicked')) {
+					$('#continue_container').css('display', 'inline');
+				}
+			});
+		});
+
+	</script>
+</head>
+
+<body>
+
+	<div id="wrapper">
+		<div id="different"></div>
+		<div id="transparentmap">
+			<img class="transparentmap" src="content_files/transparentmap.png" usemap="#photohunt" />
+			<map name="spotTheDifference">
+				<!--area coords = x,y,radius	Specifies the coordinates of the circle center and the radius (shape="circle")-->
+				<area id="bee" shape="circle" coords="73, 429, 30">
+				<area id="cloud1" shape="circle" coords="72, 42, 30">
+				<area id="cloud2" shape="circle" coords="235, 72, 30">
+				<area id="sunglasses" shape="circle" coords="402, 246, 30">
+				<area id="sun" shape="circle" coords="408, 68, 30">
+			</map>
+		</div>
+		<!--end transparent map-->
+		<div id="bee-diff"></div>
+		<div id="cloud1-diff"></div>
+		<div id="cloud2-diff"></div>
+		<div id="sunglasses-diff"></div>
+		<div id="sun"></div>
+
+		<h1>Spot the Difference:</h1>
+		<p>Click on all 5 of the differences in the picture on the right.</p> <br />
+
+		<div id="original"><img src="content_files/original.png"></div>
+		<!--end original-->
+
+		<form name="form_count"><input name="counter" type="text" size="20"></form>
+		<script type="text/javascript">
+			<!--
+			count = 0;
+			timerID = setINterval('countup()', 1000);
+
+			function countup() {
+				count++;
+				document.form_count.counter.value = count_format(count, 0);
+			}
+
+			function count_format(sec, fix) {
+				//sec=秒数 fix=少数桁数
+				var ts = sec.toFixed(fix);
+				var tm = Math.floor(ts / 60);
+				ts = ts % 60;
+				var th = Math.floor(tm / 60);
+				tm = tm % 60;
+
+				if (ts < 10) ts = "0" + ts;
+				if (tm < 10) tm = "0" + tm;
+				if (th < 10) th = "0" + th;
+				return th + ":" + tm + ":" + ts;
+			}
+
+			-->
+		</script>
+
+
+		<div id="result" style="font-weight: bold;">Elapsed Time:</div>
+
+		<div id="continue_container">
+			<h1>Congratulations!You found all 5.</h1>
+			Click "Continue" to move on to the survey.<br />
+			<button method="post" action="sendResult_Difference.php" type="button" class="continue_button" onclick="location.href='survey.html'" a href="#" style="width: 75%; padding: 15px; font-size: 40px; border-radius:20px;">Continue</button>
+		</div>
+		<!--end continue contaier -->
+
+	</div>
+	<!--end pagebg and main-->
+
+</body>
+
+</html>

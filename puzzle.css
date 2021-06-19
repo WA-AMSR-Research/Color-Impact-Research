@@ -1,57 +1,69 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+@charset ="utf-8";
+
+body,
+html {
+	padding: 0px;
+	margin: 0px;
+	background: red;
+	padding-bottom: 80px;
 }
 
 h1 {
-    padding: auto;
-    margin: auto
+	padding-top: 10px;
+	padding-bottom: 0px;
+	margin-top: 50px;
+	margin-bottom: 15px;
+	text-align: center;
+	font-family: "Arial Unicode MS", sans-serif;
+	font-weight: bolder;
 }
 
-body {
-    display: flex;
-    background-color: white;
-    text-align: center;
-    flex-direction: column;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
+h2 {
+	width: 100%;
+	margin-top: 0px;
+	padding-top: 0px;
+	text-align: center;
+	font-family: "Arial Unicode MS", sans-serif;
+	font-weight: lighter;
+	font-size: 20px;
 }
 
-#container {
-    width: 500px;
-    height: 500px;
-    background: lightgray;
-    margin: 10px auto;
+h4 {
+	font-family: "Arial Unicode MS", sans-serif;
+	font-weight: lighter;
+	margin-bottom: 5px;
 }
 
-ul {
-    display: flex;
-    flex-wrap: wrap;
-    list-style-type: none;
-    justify-content: space-evenly;
-    font-family: 'Audiowide';
-    color: lightgray;
+#box {
+	width: 500px;
+	height: 500px;
+	background: transparent;
+	margin: 20px auto;
+	padding: 1px 1px;
+	position: relative;
 }
 
-ul li {
-    background: white;
-    width: 30%;
-    height: 150px;
-    border: 1px solid white;
-    margin-top: 10px;
-    text-align: center;
-    font-size: 2rem;
-    padding-top: 3rem;
+#maskBox {
+	opacity: 0.5;
+	display: block;
 }
 
-.9(empty) {
-    background: transparent;
-    border: 2px solid transparent;
+#tu img {
+	width: 180px;
+	height: 180px;
+}
+
+#tu {
+	width: 190px;
+	height: 190px;
+	margin-left: 80px;
+}
+
+/* elapsed time */
+#result {
+	font-size: 1.2em;
+	font-weight: bold;
+	text-align: center;
+	font-family: "Arial Unicode MS", sans-serif;
+	margin-top: 50px;
 }

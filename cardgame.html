@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="style.css" type="text/css">
+	<link rel=stylesheet href="cardgame.css" href="css/style.css">
+	<title>Wakaba Aihara AMSR -Matching Game</title>
+	<script src="js/cardgame.js"></script>
+
+</head>
+
+<body id="page_cardgame">
+	<div id="gameWrapper">
+
+		<h1>Matching Cards</h1>
+
+		<div id="panel"></div>
+		<div id="result">Elapsed Time: </div>
+
+	</div>
+
+	<div id="popup1" class="overlay">
+		<div class="popup">
+			<h2>Congratulations!</h2>
+
+			<div class="content-1">
+				<p>You matched all the cards in <span id=totalTime></span></p>
+			</div>
+
+			<button id="continue" onclick="continue()">
+				<a>Continue to next test</a>
+			</button>
+
+		</div>
+	</div>
+
+</body>
+
+</html>

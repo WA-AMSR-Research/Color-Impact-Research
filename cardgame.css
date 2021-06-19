@@ -1,0 +1,107 @@
+@charset="utf-8";
+
+body {
+	font-family: "Arial Unicode MS", sans-serif;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	background-color: localStorage.bgColor;
+}
+
+h1 {
+	color: black;
+	margin: 10px;
+	margin-bottom: 50px;
+	font-weight: bold;
+}
+
+#gameWrapper {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
+	padding: 20px;
+}
+
+#panel {
+	width: 800px;
+	margin: auto;
+	margin-right: 300px;
+	height: 450px;
+	overflow: hidden;
+	padding-bottom: 60px;
+}
+
+.card {
+	float: left;
+	width: 180px;
+	height: 150px;
+
+	margin: 0.2rem 0.2rem;
+
+	border: 1px solid black;
+	border-radius: 12px;
+
+	text-align: center;
+	vertical-align: middle;
+	line-height: 90px;
+	font-size: xx-large;
+	font-weight: bold;
+
+	cursor: pointer;
+	backface-visibility: hidden;
+
+	box-shadow: black 2px 2px;
+	background: transparent;
+
+}
+
+/* card is on the back */
+.back {
+	background-image: url('img/back.png');
+	background-size: 60px 80px;
+}
+
+.is-flippped {
+	transform: rotateY(180deg);
+}
+
+/* When finished */
+.finish {
+	opacity: 0;
+	cursor: default;
+}
+
+/* Elapsed Time */
+#result {
+	font-size: 1.2em;
+	font-weight: bold;
+	display: inline-block;
+	margin-top: 30px;
+	margin-bottom: 80px;
+}
+
+
+.popup {
+	margin: 70px auto;
+	padding: 20px;
+	background: #ffffff;
+	border-radius: 5px;
+	width: 85%;
+	position: relative;
+	transition: all 5s ease-in-out;
+	font-family: "Arial Unicode MS", sans-serif;
+}
+
+.popup h2 {
+	margin-top: 20px;
+	color: #333;
+	font-family: "Arial Unicode MS", sans-serif;
+}
+
+.popup .content-1,
+.content-2 {
+	max-height: 30%;
+	overflow: auto;
+	text-align: center;
+}

@@ -1,16 +1,15 @@
-const dragover_handler = ev => {
-    console.log("dragOver");
-    ev.preventDefault();
+var startTime;
+var timer;
+
+function startTimer() {
+	timer = setInterval(showSecond, 1000);
 }
-const drop_handler = ev => {
-    console.log("drag")
-    ev.preventDefault();
-    // Get the id of the target and add the moved element to the target's DOM
-    const data = ev.dataTransfer.getData("text/plain");
-    ev.target.innerText = document.getElementById(data).innerText;
+
+function showSecond() {
+	var nowTime = new Date();
+	var elapsedTime = Math.floor((nowTime - startTime) / 1000);
+	var str = "Elapsed Time: " + elapsedTime + " seconds";
+
+	var re = document.getElementById("result");
+	re.innerHTML = str;
 }
-const dragend_handler = ev => {
-        console.log("dragEnd");
-        // Remove all of the drag data
-        ev.dataTransfer.clearData();
-    }

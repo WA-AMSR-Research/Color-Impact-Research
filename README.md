@@ -1,0 +1,2 @@
+# Color-Impact-Research
+The purpose of this study is to research the effect of primary colors (red, yellow, and blue) on human learning ability quantitatively through three tests prepared: Jigsaw Puzzle, Matching Game, and Spot The Difference. Furthermore, this research serves to construct a proposal regarding future educational material design based on the data.  The test only takes about 5 minutes and it is informal. Your participation will be a valuable addition to my research. 

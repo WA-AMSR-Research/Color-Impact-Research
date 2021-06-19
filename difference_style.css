@@ -1,0 +1,167 @@
+@charset="utf-8";
+
+h1 {
+	color: black;
+	font-family: "Arial Unicode MS", sans-serif;
+	padding-top: 30px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+p {
+	color: black;
+	font-family: "Arial Unicode MS", sans-serif;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+
+#different {
+	position: absolute;
+	background: url(content_files/after.png) no-repeat top left;
+	width: 500px;
+	height: 500px;
+	top: 20%;
+	z-index: 0;
+	border: 1px solid black;
+	margin-right: 10%;
+	margin-left: 50%;
+	float: right;
+}
+
+#bee-diff {
+	position: absolute;
+	background: url(content_files/bee.png) no-repeat top left;
+	width: 500px;
+	height: 500px;
+	top: 20%;
+	z-index: 1;
+	display: none;
+	margin-right: 10%;
+	margin-left: 50%;
+}
+
+#cloud1-diff {
+	position: absolute;
+	background: url(content_files/cloud1.png) no-repeat top left;
+	width: 500px;
+	height: 500px;
+	top: 20%;
+	display: none;
+	z-index: 1;
+	margin-right: 10%;
+	margin-left: 50%;
+}
+}
+
+#cloud2-diff {
+	position: absolute;
+	background: url(content_files/cloud2.png) no-repeat top left;
+	width: 500px;
+	height: 500px;
+	top: 20%;
+	display: none;
+	z-index: 1;
+	margin-right: 10%;
+	margin-left: 50%;
+}
+
+#sunglasses-diff {
+	position: absolute;
+	background: url(content_files/sunglasses.png) no-repeat top left;
+	width: 500px;
+	height: 500px;
+	top: 20%;
+	display: none;
+	z-index: 1;
+	margin-right: 10%;
+	margin-left: 50%;
+}
+
+#sun-diff {
+	position: absolute;
+	background: url(content_files/sun.png) no-repeat top left;
+	width: 500px;
+	height: 500px;
+	top: 20%;
+	display: none;
+	z-index: 1;
+	margin-right: 10%;
+	margin-left: 50%;
+}
+
+#transparentmap {
+	position: absolute;
+	z-index: 1;
+	top: 20%;
+	margin-right: 10%;
+	margin-left: 50%;
+}
+
+#result {
+	text-align: center;
+	padding-top: 40%;
+	margin-right: 50%;
+	margin-left: 50%;
+}
+
+#continue_container {
+	display: none;
+	color: black;
+	background: white;
+	border: 2px solid #fff;
+	position: absolute;
+	top: 50%;
+	/*上端を中央に*/
+	left: 50%;
+	/*左端を中央に*/
+	padding: 10px;
+	text-align: center;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:active {
+	text-decoration: none;
+}
+
+body {
+	color: #000;
+	font-family: "Arial Unicode MS", sans-serif;
+	background-color: red;
+	width: 100%;
+	height: 100%;
+}
+
+#original {
+	position: absolute;
+	width: 500px;
+	height: 500px;
+	top: 20%;
+	border: 1px solid black;
+	float: left;
+	margin-left: 10%;
+	margin-right: 50%;
+
+}
+
+/* #wrapper {
+	width: screen;
+	height: screen;
+	padding: 20px 0px 20px 0px;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+} */

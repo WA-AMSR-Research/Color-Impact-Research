@@ -7,6 +7,7 @@ body {
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     /* -webkit-text-size-adjust: 100%; */
+    font-family: "Arial Unicode MS", sans-serif;
 }
 
 /* Take Tets + Start */
@@ -14,11 +15,10 @@ h1 {
     text-align: center;
     font-size: 5.0em;
     font-weight: normal;
-    font-family: "Impact", sans-serif;
+    font-family: "Arial Unicode MS", sans-serif;
     display: inline-block;
     border-bottom: dashed 4px black;
     margin-bottom: 20px;
-    letter-spacing: 0.05em;
 }
 
 
@@ -26,8 +26,7 @@ h1 {
 h2 {
     text-align: auto;
     font-size: 3.0em;
-    font-weight: bolder;
-    font-family: "Arial", sans-serif;
+    font-weight: bold;
     margin-bottom: 15px;
 }
 
@@ -35,13 +34,12 @@ p {
     text-align: center;
     font-size: auto;
     font-weight: lighter;
-    font-family: "Arial Unicode MS", sans-serif;
 }
 
 startbutton {
     font-size: 1.4em;
-    font-weight: bold;
-    font-family: "Avenir", sans-serif;
+    font-weight: bolder;
+    font-family: "Arial Unicode MS", sans-serif;
 
     color: black;
     background-color: white;

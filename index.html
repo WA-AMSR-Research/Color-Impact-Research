@@ -6,16 +6,8 @@
         <meta charset="utf-8">
         <title>Wakaba Aihara's AMSR Project</title>
         <meta name="viewpoint" content="initial-scale=1">
-        <link type="text/css" rel="stylesheet" href="startstyle.css" href="style.css">
-        <style type="text/css">
-            body {
-                background-color: white;
-            }
-
-        </style>
-        <base href="https://wakabacolorresearch.com/" target="_blank">
+        <link type="text/css" rel="stylesheet" href="startstyle.css">       
     </head>
-
 
     <body id="page_start">
         <div style="text-align: center;">
@@ -24,20 +16,14 @@
 
             <script type="text/javascript">
                 var backgroundMode = 0;
+                document.body.style.backgroundColor = localStorage.bgcolor || "white";
 
                 //when the background color is changed (when the button is clicked)
                 function changePageBgColor(newColor) {
                     document.body.style.backgroundColor = newColor;
+                    localStorage.bgcolor = newColor;
                 }
-
-                //load the bgColor on page load:
-                document.getElementById("Red").style.backgroundColor = localStorage.bgcolor || 'red'
-                document.getElementById("Yellow").style.backgroundColor = localStorage.bgcolor || 'yellow'
-                document.getElementById("Blue").style.backgroundColor = localStorage.bgcolor || 'blue'
-                document.getElementById("White").style.backgroundColor = localStorage.bgcolor || 'white'
-
             </script>
-
 
             <p>
                 <input type="button" id="Red" value="Red" onclick="changePageBgColor('red');" style="font-size:25px; font-weight: lighter; font-family:'Arial', sans-serif; padding: 15px; border-radius:20px; background-color:red;">
@@ -55,5 +41,4 @@
         </div>
 
     </body>
-
-    </html>
+</html>

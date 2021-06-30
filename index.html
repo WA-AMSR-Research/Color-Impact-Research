@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewpoint" content="initial-scale=1">
+    <title>Wakaba Aihara's AMSR Project</title>
+    <link type="text/css" rel="stylesheet" href="startstyle.css">
+</head>
+
+<body id="page_start">
+    <div style="text-align: center;">
+        <h2>Select Background Color</h2>
+        <p>
+        <input type="button" id="Red" value="Red" onclick="changePageBgColor('red');" style="font-size:25px; font-weight: lighter; font-family:'Arial', sans-serif; padding: 15px; border-radius:20px; background-color:red;">
+        <input type="button" id="Yellow" value="Yellow" onclick="changePageBgColor('yellow');" style="font-size:25px; font-weight: lighter; font-family:'Arial', sans-serif; padding: 15px; border-radius:20px; background-color:yellow;">
+        <input type="button" id="Blue" value="Blue" onclick="changePageBgColor('blue');" style="font-size:25px; font-weight: lighter; font-family:'Arial', sans-serif; padding: 15px; border-radius:20px;background-color:blue;">
+        <input type="button" id="White" value="White" onclick="changePageBgColor('white');" style="font-size:25px; font-weight: lighter; font-family:'Arial', sans-serif; padding: 15px; border-radius:20px; background-color:white;">
+        </p>
+        <h1>Take Tests</h1>
+        <div style="text-align: center; margin-left:10%;margin-right:10%;">
+            <button type="button" class="startbutton" onclick="goNextPage()" a href="#" style="width: 75%; padding: 15px; font-size: 40px; border-radius:20px;">START</button>
+        </div>
+    </div>
+
+    <!-- javascripts -->
+
+    <script src="lib/jquery-3.6.0.js"></script>
+    <script src="lib/jquery.rwdImageMaps.min.js"></script>
+  	<script src="common.js"></script>
+
+    <script>
+    //when the background color is changed (when the button is clicked)
+    changePageBgColor = (newColor) => {
+      document.body.style.backgroundColor = newColor;
+      sessionStorage.bgcolor = newColor;
+    }
+
+    goNextPage = ( ) => {
+      window.location.href = 'puzzle.html';
+    }
+
+    sessionStorage.clear();
+    changePageBgColor( 'White' );
+    </script>
+</body>
+
+</html>

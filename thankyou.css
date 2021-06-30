@@ -1,0 +1,15 @@
+@charset="utf-8";
+
+body {
+    width: 80%;
+    margin: auto;
+    background-color: darkgray;
+    font-family: "Arial Unicode MS", sans-serif;
+    text-align: center;
+    padding: 1em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}

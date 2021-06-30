@@ -1,0 +1,179 @@
+
+
+
+body { margin: 0; padding: 0; width: 100%; }
+div  { margin: 0; padding: 0; font-family: sans-serif;}
+#gameTitle  { margin: 0; padding: 0; width: 100%; text-align: center; }
+#gamePanel  { margin: 0; padding: 0; width: 100%; display: flex; flex-direction: row; justify-content: center; }
+#gameTimer  { margin: 0; padding: 0; width: 100%; text-align: center; }
+#gameInfo   { margin: 0; padding: 0; width: 100%; text-align: center; }
+#gameModal  { margin: 0; padding: 0; width: 100%; text-align: center; }
+#gameFrame1 { margin: 0; padding: 0; width: 500px; height: 500px; }
+#gameFrame2 { margin: 0; padding: 0; width: 500px; height: 500px; }
+#gameFrame3 { margin: 0; padding: 0; width: 800px; height: 500px; }
+#gameFrame4 { margin: 0; padding: 0; width: 500px; height: 500px; }
+
+
+/* Puzzle Game */
+
+#box { width:500px; height:500px; position: relative; }
+#tu {
+	position: absolute;
+	top: 15%;
+	left: 5%;
+	 width: 180px;
+		height:180px;
+}
+#tuimg {
+	width: 180px;
+	height: 180px;
+}
+
+/* Card Game */
+
+.card {
+	float: left;
+	width: 180px;
+	height: 150px;
+
+	margin: 0.2rem 0.2rem;
+
+	border: 1px solid black;
+	border-radius: 12px;
+
+	text-align: center;
+	vertical-align: middle;
+	line-height: 90px;
+	font-size: xx-large;
+	font-weight: bold;
+
+	cursor: pointer;
+	backface-visibility: hidden;
+
+	box-shadow: black 2px 2px;
+	background: transparent;
+
+  /* add */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* card is on the back */
+.back {
+	background-color: lightgray;
+	background-size: 60px 80px;
+}
+
+/* When finished */
+.finish {
+	opacity: 0;
+	cursor: default;
+}
+
+/* spot difference game */
+
+#original {
+  position: absolute;
+  background: url(images/content_files/original.png) no-repeat top left;
+  width: 500px;
+  height: 500px;
+  visibility: visible;
+  /*visibility: hidden;*/
+  z-index: 0;
+}
+#after {
+  position: absolute;
+	background: url(images/content_files/after.png) no-repeat top left;
+	width: 500px;
+	height: 500px;
+  visibility: visible;
+  /*visibility: hidden;*/
+  z-index: 0;
+}
+#bee-diff {
+	position: absolute;
+	background: url(images/content_files/bee.png) no-repeat top left;
+	width: 500px;
+	height: 500px;
+	/*visibility: visible;*/
+	visibility: hidden;
+	z-index: 1;
+}
+#cloud1-diff {
+	position: absolute;
+	background: url(images/content_files/cloud1.png) no-repeat top left;
+	width: 500px;
+	height: 500px;
+	/*visibiliy: visible;*/
+	visibility: hidden;
+	z-index: 1;
+}
+#cloud2-diff {
+	position: absolute;
+	background: url(images/content_files/cloud2.png) no-repeat top left;
+	width: 500px;
+	height: 500px;
+	/*visibility: visible;*/
+	visibility: hidden;
+	z-index: 1;
+}
+#sunglasses-diff {
+	position: absolute;
+	background: url(images/content_files/sunglasses.png) no-repeat top left;
+	width: 500px;
+	height: 500px;
+	/*visibility: visible;*/
+	visibility: hidden;
+	z-index: 1;
+}
+#sun-diff {
+	position: absolute;
+	background: url(images/content_files/sun.png) no-repeat top left;
+	width: 500px;
+	height: 500px;
+	/*visibility: visible;*/
+  visibility: hidden;
+	z-index: 1;
+}
+#transparentmap {
+	position: absolute;
+  background: url(images/content_files/transparentmap.png) no-repeat top left;
+	width: 500px;
+	height: 500px;
+	visibility: visible;
+  /*visibility: hidden;*/
+	z-index: 2;
+}
+
+/* common modal */
+
+.overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.7);
+
+	visibility: hidden;
+  /*
+  visibility: visible;
+  */
+	z-index: 3;
+}
+
+.popup {
+	margin: 70px auto;
+	padding: 20px;
+	background: white;
+	border-radius: 5px;
+	width: 85%;
+	position: relative;
+	transition: all 5s ease-in-out;
+	font-family: "Arial Unicode MS", sans-serif;
+	z-index: 3;
+}
+
+/* end of file */

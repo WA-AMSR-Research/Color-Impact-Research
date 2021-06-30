@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wakaba Aihara's AMSR -Spot the Difference</title>
+    <link href="common.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="gameTitle">
+        <h1>Spot the Difference:</h1>
+        <h2>Click on all 5 of the differences in the picture on the right.</h2>
+    </div>
+
+    <div id="gamePanel">
+        <div id="gameFrame1">
+            <div id="original"></div>
+        </div>
+        <div id="gameFrame2">
+            <div id="after"></div>
+            <div id="bee-diff"></div>
+            <div id="cloud1-diff"></div>
+            <div id="cloud2-diff"></div>
+            <div id="sunglasses-diff"></div>
+            <div id="sun-diff"></div>
+            <div id="transparentmap">
+                <img class="transparentmap" src="images/content_files/transparentmap.png" usemap="#spotTheDifference" />
+                <map name="spotTheDifference">
+                    <!--area coords = x,y,radius	Specifies the coordinates of the circle center and the radius (shape="circle")-->
+                    <area id="bee" shape="circle" coords="73, 429, 30">
+                    <area id="cloud1" shape="circle" coords="72, 42, 30">
+                    <area id="cloud2" shape="circle" coords="235, 72, 30">
+                    <area id="sunglasses" shape="circle" coords="402, 246, 30">
+                    <area id="sun" shape="circle" coords="408, 68, 30">
+                </map>
+            </div>
+        </div>
+    </div>
+
+    <div id="gameTimer">
+        <h2 id="elapsedTime">&nbsp;</h2>
+    </div>
+
+    <div id="gameInfo">
+        <h2 id="found">0 differences found</h2>
+    </div>
+
+    <div id="gameModal">
+        <div class="overlay" >
+            <div class="popup">
+                <h2>Congratulations!</h2>
+                <h3>You found all 5 differences <span id="elapsedTimeInModal">&nbsp;</span><h3>
+                <h3>Click "Continue" to move onto the survey.</h3>
+                <h3><button id="countinue" onclick="goNextPage()">Continue</button></h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- javascripts -->
+
+    <script src="lib/jquery-3.6.0.js"></script>
+    <script src="lib/jquery.rwdImageMaps.min.js"></script>
+  	<script src="common.js"></script>
+
+    <script>
+    var countFound = 0;
+
+	  $(document).ready(function() {
+       // When clicked, show difference
+       $('#transparentmap AREA').click(function() {
+         var theDifference = '#' + $(this).attr('id') + '-diff';
+			   $(theDifference).css('visibility', 'visible');
+			   $(theDifference).data('clicked', true);
+
+         countFound += 1;
+         var el = document.getElementById("found");
+         el.innerHTML = `${countFound} differences found`;
+
+			   if (
+				   $('#bee-diff').data('clicked') &&
+				   $('#cloud1-diff').data('clicked') &&
+				   $('#cloud2-diff').data('clicked') &&
+				   $('#sunglasses-diff').data('clicked') &&
+				   $('#sun-diff').data('clicked')
+         ) {
+				   endGame();
+			   }
+		  });
+    });
+
+    /* Game Flow */
+    initGame = () => {
+      // skip
+    }
+
+    startGame = () => {
+      setPageBgColor();
+      initGame();
+      startGameTimer();
+    }
+
+    endGame = () => {
+      stopGameTimer();
+      saveElapsedTime("elapsedTimeSpotDifference");
+      window.setTimeout(showModal, 500); // 500ms
+    }
+
+    goNextPage = ( ) => {
+      window.location.href = 'survey.html';
+    }
+
+    /* Game Entry point */
+    startGame();
+
+  </script>
+</body>
+
+</html>

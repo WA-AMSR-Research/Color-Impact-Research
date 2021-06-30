@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wakaba Aihara's AMSR -Jigsaw Puzzle</title>
+    <link href="common.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="gameTitle">
+        <h1>Jigsaw Puzzle:</h1>
+        <h2>Click to select a square, and click to place it in the corresponding square.</h2>
+    </div>
+    <div id="tu">
+        <h5>Refer to the original image</h5>
+        <img id="tuimg" src="images/bear.png" />
+    </div>
+    <div id="gamePanel">
+        <div id="gameFrame4">
+            <div id="box"></div>
+        </div>
+    </div>
+    <div id="gameTimer">
+        <h2 id="elapsedTime">&nbsp;</h2>
+    </div>
+    <div id="gameModal">
+        <div class="overlay" >
+            <div class="popup">
+                <h2>Congratulations!</h2>
+                <h3>You completed the puzzle <span id="elapsedTimeInModal">&nbsp;</span></h3>
+                <h3>Click on "Continue" to move onto the next test.</h3>
+                <h3><button id="countinue" onclick="goNextPage()">Continue</button></h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- javascripts -->
+
+    <script src="lib/jquery-3.6.0.js"></script>
+    <script src="lib/jquery.rwdImageMaps.min.js"></script>
+  	<script src="common.js"></script>
+
+    <script>
+    // game setting
+    var W  = undefined; // original image width
+    var H  = undefined; // original image height
+    var PW = undefined; // piece width
+    var PH = undefined; // piece height
+    var PIW = undefined; // piece image width
+    var PIH = undefined; // piece image height
+    var NR = undefined; // num of row
+    var NC = undefined; // num of column
+
+    //  drag and drop
+    var draged = false;
+    var dragedId = undefined;
+    var dragedEl = undefined;
+    var dragX = undefined;
+    var dragY = undefined;
+    var dragxi = undefined;
+    var dragyi = undefined;
+    var hoverId = undefined;
+
+    dad_mousedown = (e) => {
+      e.preventDefault();
+
+      var rect = e.currentTarget.getBoundingClientRect();
+      var cx = e.clientX - rect.left;
+      var cy = e.clientY - rect.top;
+      dragX = e.offsetX;
+      dragY = e.offsetY;
+
+      draged = true;
+      dragedId = e.target.id;
+      dragedEl = document.getElementById( dragedId );
+      dragxi = parseInt( dragedEl.style.left.replace("px","") );
+      dragyi = parseInt( dragedEl.style.top.replace("px","") );
+
+      dragedEl.style.opacity = 0.8;
+    }
+
+    dad_mousemove = (e) => {
+      event.preventDefault();
+
+      var rect = e.currentTarget.getBoundingClientRect();
+      var cx = e.clientX - rect.left;
+      var cy = e.clientY - rect.top;
+      var bx = cx - dragX;
+      var by = cy - dragY;
+
+      if ( draged ){
+        var bix = Math.floor( bx / PW ) * PW;
+        var biy = Math.floor( by / PH ) * PH;
+
+        dragedEl.style.left = `${bx}px`;
+        dragedEl.style.top  = `${by}px`;
+        dragedEl.style.opacity = 0.8;
+
+        var cix0 = Math.floor( cx / PW ) * PW;
+        var ciy0 = Math.floor( cy / PH ) * PH;
+
+        var cix = clip( cix0, 0, PW * (NC -1 ) );
+        var ciy = clip( ciy0, 0, PH * (NR -1)  );
+
+        for (var ix = 0; ix < ( NR*NC ) ; ix++ ){
+          if ( ix == dragedId ) continute;
+
+          var  id = `i${ix}`;
+          var ee = document.getElementById(id);
+          mx = parseInt( ee.style.left.replace("px","") );
+          my = parseInt( ee.style.top.replace("px","")  );
+
+          if ((mx == cix) && (my == ciy)){
+            ee.style.opacity = 0.4;
+            hoverId =  id;
+          } else {
+            ee.style.opacity = 1.0;
+          }
+        }
+      }
+    }
+
+    dad_mouseup = (e) => {
+      event.preventDefault();
+
+      var rect = e.currentTarget.getBoundingClientRect();
+      var cx = e.clientX - rect.left;
+      var cy = e.clientY - rect.top;
+      var bx = cx - dragX;
+      var by = cy - dragY;
+
+      if (draged){
+
+        var bix0 = Math.floor( bx / PW ) * PW ;
+        var biy0 = Math.floor( by / PH ) * PH ;
+
+        var bix = clip(bix0, 0, PW * (NC-1) );
+        var biy = clip(biy0, 0, PH * (NR-1) );
+
+        dragedEl.style.left = `${bix}px`;
+        dragedEl.style.top  = `${biy}px`;
+        dragedEl.style.opacity = 1.0;
+
+        var cix0 = Math.floor( cx / PW ) * PW;
+        var ciy0 = Math.floor( cy / PH ) * PH;
+
+        var cix = clip(cix0, 0, PW * (NC-1) );
+        var ciy = clip(ciy0, 0, PH * (NR-1) );
+
+        dragedEl.style.left = `${cix}px`;
+        dragedEl.style.top  = `${ciy}px`;
+        dragedEl.style.opacity = 1.0;
+
+        for (var ix = 0; ix < (NR*NC); ix++ ){
+          if ( ix == parseInt( dragedId.replace("i","") ) ) {
+            continue;
+          }
+          var  id = `i${ix}`;
+          var ee = document.getElementById(id);
+          mx = parseInt( ee.style.left.replace("px","") );
+          my = parseInt( ee.style.top.replace("px","")  );
+
+          if ((mx == cix) && (my == ciy)){
+            ee.style.opacity = 1.0;
+            ee.style.left = `${dragxi}px`;
+            ee.style.top  = `${dragyi}px`;
+
+          } else {
+            //ee.style.opacity = 1.0;
+          }
+        }
+      }
+      draged = false;
+      dragedId = undefined;
+      dragedEl = undefined;
+
+      checkGameFinish();
+    }
+
+    clip = ( x, min, max ) => {
+      if ( x <= min ){
+        return min;
+      } else if ( x >= max ){
+        return max;
+      } else {
+        return x;
+      }
+    }
+
+    createObjectList = () => {
+      var objectList = [];
+      var nr = NR;
+      var nc = NC;
+      for( var r = 0; r < nr; r++ ){
+        for( var c = 0; c < nc; c++ ){
+          var ix = (nc * r) + c;
+          var x  = PW * c;
+          var y  = PH * r;
+          var bx = 0 - PW * c;
+          var by = 0 - PH * r;
+          var id = `i${ix}`;
+          var e = document.createElement('div');
+          e.className = "piece";
+          e.id = id;
+          e.style.position = "absolute";
+          e.style.left = `${x}px`;
+          e.style.top  = `${y}px`;
+          e.style.width  = `${PIW}px`;
+          e.style.height = `${PIH}px`;
+          e.style.backgroundImage = 'url("images/bear.png")';
+          e.style.backgroundPositionX = `${bx}px`;
+          e.style.backgroundPositionY = `${by}px`;
+          e.ex = x;
+          e.ey = y;
+          e.ix = ix;
+          e.flg = 1;
+          e.num = ix;
+          e.innerHTML = id;
+          objectList.push(e);
+        }
+      }
+      return objectList;
+    }
+
+    sortObjectList = (objectList, randomList) => {
+      var outObjectList = [];
+      var nr = NR;
+      var nc = NC;
+      for( var r = 0; r < nr; r++ ){
+        for( var c = 0; c < nc; c++ ){
+          var i  = (nc * r) + c;
+          var ix = randomList[i];
+          var x  = PW * c;
+          var y  = PH * r;
+          var e_org = objectList[ix];
+          var e = e_org.cloneNode();
+          e.style.left = `${x}px`;
+          e.style.top  = `${y}px`;
+          e.ex = x;
+          e.ey = y;
+          e.ix = i;
+          outObjectList.push(e);
+        }
+      }
+      return outObjectList;
+    }
+
+    checkGameFinish = () => {
+      var ee = document.getElementsByClassName("piece");
+      var ok = 0;
+      for (var i = 0; i < (NR*NC); i++){
+        var num = parseInt( ee[i].id.replace("i",""));
+
+        var x = parseInt( ee[i].style.left.replace("px","") );
+        var y = parseInt( ee[i].style.top.replace("px","")  );
+        var num_cal = NC * (y/PH) + (x/PW);
+
+        var b = ( num == num_cal );
+        if ( b ){ ok = ok + 1; }
+      }
+      if ( ok < (NR*NC) ) return;
+
+      endGame();
+    }
+
+    randomsort = (a, b) => {
+      return Math.random() > .5 ? -1 : 1;
+    }
+
+
+    initPuzzle = () => {
+        W = 500; // original image width
+        H = 500; // original image height
+        NR = 4; // num of row
+        NC = 4; // num of column
+        PW = Math.floor( W / NC ); // piece width
+        PH = Math.floor( H / NR ); // piece height
+        PIW = PW - 2; // piece image width
+        PIH = PH - 2; // piece image height
+
+        var rightList = [];
+        for (var a = 0; a < (NR*NC); a++) {
+          rightList.push(a);
+        }
+
+        var randomList = rightList.concat();
+        randomList.sort(randomsort);
+
+        var rightObjectList = createObjectList();
+        var randomObjectList = sortObjectList(rightObjectList,randomList)
+        var e = document.getElementById('box');
+        for(var o of randomObjectList){
+          e.appendChild(o);
+        }
+
+        var el = document.getElementById("box");
+        el.addEventListener("mousedown", dad_mousedown );
+        el.addEventListener("mousemove", dad_mousemove );
+        el.addEventListener("mouseup", dad_mouseup );
+    }
+
+    /* Game Flow */
+    initGame = () => {
+      initPuzzle();
+    }
+
+    startGame = () => {
+      setPageBgColor();
+      initGame();
+      startGameTimer();
+    }
+
+    endGame = () => {
+      stopGameTimer();
+      saveElapsedTime("elapsedTimePuzzle");
+      window.setTimeout(showModal, 500); // 500ms
+    }
+
+    goNextPage = ( ) => {
+      window.location.href = 'cardgame.html';
+    }
+
+    /* Game Entry Point */
+    startGame();
+
+    </script>
+</body>
+
+</html>

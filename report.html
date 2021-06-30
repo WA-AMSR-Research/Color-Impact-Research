@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewpoint" content="initial-scale=1">
+    <style>
+      body { font-family: sans-serif; }
+      table { border-collapse: collapse; }
+      td { border: solid 1pt; border-color: #c0c0c0; color: #202020; text-align: center; font-family: sans-serif; font-size: 14pt; }
+      tr { background: #ffffff }
+      tr:hover { background: #ffffe0 }
+      </style>
+</head>
+
+<body>
+
+    <h1>Report</h1>
+    <div id="table">
+    </div>
+
+    <script>
+    DB = [];
+
+    downloadlist = (  ) => {
+      var url = "list.php";
+      var req = new XMLHttpRequest();
+      req.open("get",url,false); // blocking=false, non-blocking=true
+	    req.send(null);
+	    return JSON.parse(req.responseText);
+    }
+
+    downloadfile = ( url ) => {
+      var req = new XMLHttpRequest();
+      req.open("get",url,false); // blocking=false, non-blocking=true
+      req.send(null);
+      return JSON.parse(req.responseText);
+    }
+
+    main = () => {
+      var ret = downloadlist();
+      if ( ret[0] != 0) return -1;
+      var filelist =ret[1];
+
+      for(var i=0; i < filelist.length; i++){
+        var href = location.href;
+        var path = href.substring(0,href.lastIndexOf("/"));
+        var url = path + "/uploadFiles/" + filelist[i];
+        var file = downloadfile( url );
+        DB.push( file );
+      }
+
+      var out = "";
+      out += "<table>";
+      out += "<tr>";
+      out += "<td>" + "time" +"</td>";
+      out += "<td>" + "localetime" +"</td>";
+      out += "<td>" + "bgcolor" + "</td>";
+      out += "<td>" + "elapsedTime Puzzle" + "</td>";
+      out += "<td>" + "elapsedTime CardGame" + "</td>";
+      out += "<td>" + "elapsedTime SpotDifference" + "</td>";
+      out += "<td>" + "survey Gender" + "</td>";
+      out += "<td>" + "survey Agegroup" + "</td>";
+      out += "<td>" + "survey Color" + "</td>";
+      out += "<td>" + "survey Result" + "</td>";
+      out += "<td>" + "survey Performane" + "</td>";
+      out += "<td>" + "survey Background" + "</td>";
+      out += "</tr>";
+
+      for(var i = 0; i < DB.length; i++){
+        out += "<td>" + DB[i]["time"] +"</td>";
+        out += "<td>" + DB[i]["localetime"] +"</td>";
+        out += "<td>" + DB[i]["bgcolor"] + "</td>";
+        out += "<td>" + DB[i]["elapsedTimePuzzle"] + "</td>";
+        out += "<td>" + DB[i]["elapsedTimeCardGame"] + "</td>";
+        out += "<td>" + DB[i]["elapsedTimeSpotDifference"] + "</td>";
+        out += "<td>" + DB[i]["surveyGender"] + "</td>";
+        out += "<td>" + DB[i]["surveyAgegroup"] + "</td>";
+        out += "<td>" + DB[i]["surveyColor"] + "</td>";
+        out += "<td>" + DB[i]["surveyResult"] + "</td>";
+        out += "<td>" + DB[i]["surveyPerformane"] + "</td>";
+        out += "<td>" + DB[i]["surveyBackground"] + "</td>";
+        out += "</tr>"
+      }
+
+      out += "</table>"
+      var el = document.getElementById("table");
+      el.innerHTML = out;
+    }
+
+    main();
+
+</script>
+</body>
+
+</html>
